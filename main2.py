@@ -81,7 +81,6 @@ if section == "Detalii despre setul de date":
         st.warning(
             f"Au fost eliminate {numar_linii_initial - numar_linii_dupa} înregistrări duplicate. Acum setul conține {numar_linii_dupa} înregistrări.")
 
-    # Verificare valori lipsă
     nan_summary = df_diabet.isnull().sum()
     if nan_summary.sum() > 0:
         st.warning("Setul de date conține valori lipsă:")
@@ -100,7 +99,6 @@ if section == "Analiza Exploratorie":
     df_diabet = df_diabet.drop(cols_to_drop, axis=1)
     st.write(df_diabet.head())
 
-    # Definirea coloanelor
     coloane_numerice = ["Age", "BMI", "AlcoholConsumption", "PhysicalActivity", "DietQuality", "SleepQuality",
                         "SystolicBP", "DiastolicBP", "FastingBloodSugar", "HbA1c", "SerumCreatinine",
                         "BUNLevels", "CholesterolTotal", "CholesterolLDL", "CholesterolHDL", "CholesterolTriglycerides",
@@ -297,7 +295,6 @@ if section == "Analiza Exploratorie":
             unsafe_allow_html=True
         )
 
-        # Opțiuni de vizualizare
         vizualizare = st.radio(
             "Alegeți tipul de vizualizare:",
             ['Distribuții pentru toate variabilele numerice',
@@ -490,7 +487,7 @@ if section == "Analiza Exploratorie":
                     Vă recomandăm să selectați un subset de variabile de interes.
                     """)
 
-            # Selectarea variabilelor pentru pairplot
+
             selected_vars = st.multiselect(
                 'Selectați variabilele pentru pairplot (maximum 6 recomandat):',
                 coloane_numerice,
@@ -503,11 +500,11 @@ if section == "Analiza Exploratorie":
                 if len(selected_vars) > 6:
                     st.warning("Ați selectat multe variabile, generarea pairplot-ului poate dura mai mult.")
 
-                # Adăugăm variabila de diagnostic pentru colorare
+
                 plot_data = df_diabet[selected_vars + ['Diagnosis']].copy()
                 plot_data['Diagnostic'] = plot_data['Diagnosis'].map({0: 'Fără diabet', 1: 'Cu diabet'})
 
-                # Generăm pairplot-ul
+
                 fig = plt.figure(figsize=(12, 10))
                 g = sns.pairplot(plot_data, hue='Diagnostic',
                                  palette={'Fără diabet': 'green', 'Cu diabet': 'red'},
@@ -543,7 +540,6 @@ if section == "Analiza Exploratorie":
                 unsafe_allow_html=True
             )
 
-            # Opțiuni de afișare
             correlation_type = st.radio(
                 "Alegeți tipul de corelație:",
                 ['Pearson (parametrică)', 'Spearman (non-parametrică)']
@@ -555,18 +551,14 @@ if section == "Analiza Exploratorie":
             else:
                 matrice_corelatie = df_diabet[coloane_numerice + ['Diagnosis']].corr(method='spearman')
                 corr_method = "Spearman"
-
-            # Opțiuni pentru vizualizarea matricei de corelație
             show_option = st.radio(
                 "Vizualizare:",
                 ['Toate corelațiile', 'Doar corelații cu diagnosticul']
             )
 
             if show_option == 'Doar corelații cu diagnosticul':
-                # Extragem corelațiile cu diagnosticul și le sortăm
                 diag_corr = matrice_corelatie['Diagnosis'].drop('Diagnosis').sort_values(ascending=False)
 
-                # Cream un DataFrame pentru afișare
                 diag_corr_df = pd.DataFrame({
                     'Variabilă': diag_corr.index,
                     f'Corelație {corr_method} cu diagnosticul': diag_corr.values
@@ -581,7 +573,6 @@ if section == "Analiza Exploratorie":
                 ax.set_title(f'Corelații {corr_method} cu diagnosticul de diabet')
                 ax.axvline(x=0, color='black', linestyle='-', alpha=0.3)
 
-                # Adăugăm valori pe barplot
                 for i, v in enumerate(diag_corr.values):
                     ax.text(v + 0.01 if v >= 0 else v - 0.07, i, f"{v:.3f}", va='center')
 
