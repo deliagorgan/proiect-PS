@@ -1,0 +1,103 @@
+##### **1. Vârsta (Age)**
+Vârsta medie a pacienților este de **54.62 ani**, ceea ce indică un grup
+format în principal din adulți de vârstă mijlocie și seniori. **25% dintre
+pacienți au sub 37 de ani**, iar **75% sunt sub 72 de ani**, ceea ce arată
+că diabetul afectează și persoane mai tinere, deși incidența este mai mare
+la vârstnici. Cel mai tânăr pacient are **20 de ani**, iar cel mai în vârstă
+are **90 de ani**.
+
+##### **2. Indicele de masă corporală (BMI)**
+Indicele de masă corporală (BMI) mediu este de **27.82**, indicând o tendință
+spre supraponderalitate. **25% dintre pacienți au un BMI sub 21.70**, ceea ce
+îi plasează în categoria normoponderală sau chiar subponderală, în timp ce
+**25% au un BMI peste 33.92**, ceea ce indică obezitate. Valorile extreme
+variază între **15.03** și **39.92**, ceea ce sugerează existența unor pacienți
+cu greutate foarte mică, dar și a unor pacienți cu obezitate severă.
+
+##### **3. Consumul de alcool (Alcohol Consumption)**
+Consumul mediu de alcool este de **10.03 unități**, dar variază semnificativ,
+de la **0.01 unități** până la **19.99 unități**. **25% dintre pacienți
+consumă sub 4.57 unități**, iar **25% depășesc 15.39 unități**, ceea ce indică
+un consum ridicat pentru o parte dintre aceștia. Excesul de alcool poate crește
+riscul de complicații diabetice și afectare hepatică.
+
+##### **4. Activitatea fizică (Physical Activity)**
+Activitatea fizică medie este de **5.18 ore pe săptămână**, dar există variații
+mari, de la **0.03 ore** la **9.97 ore**. **25% dintre pacienți fac sub 2.64 ore
+de exerciții**, în timp ce **25% depășesc 7.73 ore**. Lipsa activității fizice
+poate duce la creșterea greutății corporale și agravarea simptomelor diabetului.
+
+##### **5. Calitatea dietei (Diet Quality)**
+Scorul mediu al calității dietei este **4.75** pe o scară de la 0 la 10. **25%
+dintre pacienți au o dietă de foarte slabă calitate (sub 2.26)**, în timp ce
+**25% au o dietă mai echilibrată (peste 7.22)**. Alimentația este un factor
+crucial în gestionarea diabetului, iar pacienții cu scoruri mici prezintă un
+risc mai mare de complicații.
+
+##### **6. Calitatea somnului (Sleep Quality)**
+Calitatea somnului are un scor mediu de **7.02**, ceea ce indică un somn
+relativ bun pentru majoritatea pacienților. Totuși, **25% dintre aceștia au
+scoruri sub 5.53**, ceea ce sugerează probleme de somn, iar un sfert au scoruri
+de peste **8.50**, având o calitate excelentă a somnului. Somnul insuficient
+poate afecta nivelul glicemiei și metabolismul insulinei.
+
+##### **7. Tensiunea arterială**
+Tensiunea arterială medie este **132.43 mmHg** pentru tensiunea sistolică și
+**91.03 mmHg** pentru tensiunea diastolică. **25% dintre pacienți au valori
+sub 109/76 mmHg**, ceea ce este normal, dar **25% depășesc 154/107 mmHg**,
+indicând hipertensiune severă. Hipertensiunea este un factor de risc major
+pentru complicațiile cardiovasculare la diabetici.
+
+##### **8. Glicemia a jeun și HbA1c**
+Glicemia a jeun are o medie de **155.96 mg/dL**, dar variază între **71.44** și
+**199.94 mg/dL**. **25% dintre pacienți au valori sub 138.57 mg/dL**, ceea ce
+este aproape de normal, dar **25% au peste 178.77 mg/dL**, ceea ce indică un
+control slab al diabetului.
+
+Hemoglobina glicozilată (HbA1c) are o medie de **7.89%**, cu valori între
+**4.00% și 9.99%**. **25% dintre pacienți au valori sub 7.11%**, ceea ce
+indică un diabet mai bine controlat, dar **25% depășesc 9.00%**, ceea ce
+înseamnă un risc crescut de complicații pe termen lung.
+
+
+Nivelul mediu al creatininei serice este **2.82 mg/dL**, cu valori între
+**0.50 și 4.99 mg/dL**, iar nivelul mediu al ureei (BUN) este **28.24 mg/dL**,
+variind între **5.01 și 49.97 mg/dL**. Valorile ridicate pot indica afectare
+renală, frecventă la pacienții cu diabet.
+
+##### **9. Colesterol și trigliceride**
+Colesterolul total are o medie de **224.44 mg/dL**, iar colesterolul LDL
+are o medie de **124.62 mg/dL**. **25% dintre pacienți au colesterol total
+sub 187.46 mg/dL**, iar **25% depășesc 261.65 mg/dL**, ceea ce indică un risc
+crescut cardiovascular. Trigliceridele au o valoare medie de **229.63 mg/dL**,
+dar pot ajunge până la **399.89 mg/dL**, ceea ce este extrem de ridicat.
+
+##### **10. Nivelul de oboseală**
+Nivelul de oboseală raportat de pacienți are o medie de **4.89**, pe o scară
+de la 0 la 10. **25% dintre pacienți resimt oboseală minimă (sub 2.36)**, în
+timp ce **25% raportează un nivel ridicat de oboseală (peste 7.49)**, ceea
+ce poate fi legat de glicemia ridicată sau de alte probleme metabolice.
+
+
+##### **11. Frecvența controalelor medicale și aderența la tratament**
+Frecvența controalelor medicale este **1.98** pe o scară de la 0 la 10, ceea
+ce sugerează că pacienții nu merg foarte des la medic. **25% dintre pacienți
+au scoruri sub 1.08**, iar **25% au peste 2.95**, ceea ce indică diferențe
+mari în accesul la îngrijiri medicale.
+
+Aderența la tratament este de **5.01** din 10. **25% dintre pacienți au scoruri
+sub 2.54**, ceea ce indică o respectare slabă a indicațiilor medicale, iar
+**25% au peste 7.54**, ceea ce arată o gestionare mai responsabilă a tratamentului.
+
+##### **12. Nivelul de educație în sănătate**
+Nivelul de educație în sănătate are o medie de **4.93**, cu valori între
+**0.00 și 9.93**. **25% dintre pacienți au un nivel de educație medicală sub
+2.49**, ceea ce sugerează lipsa cunoștințelor despre boală, în timp ce **25%
+au peste 7.50**, având un nivel bun de informare.
+
+### **Concluzii**
+Pacienții cu diabet prezintă riscuri suplimentare precum hipertensiunea,
+obezitatea și nivelurile ridicate ale lipidelor din sânge. Mulți dintre ei
+au un control slab al glicemiei și o aderență scăzută la tratament. Creșterea
+educației în sănătate, îmbunătățirea stilului de viață și monitorizarea mai
+frecventă ar putea reduce riscurile asociate.

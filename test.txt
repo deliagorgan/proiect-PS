@@ -1,0 +1,49 @@
+st.markdown("### Opțiuni pentru tratarea outlierilor:")
+
+            treatment_options = st.radio(
+                "Alegeți metoda de tratare a outlierilor:",
+                ['Păstrare', 'Eliminare', 'Winsorizing', 'Înlocuire cu medie/mediană']
+            )
+
+            if treatment_options == 'Eliminare':
+                cleaned_data = df_diabet[~((df_diabet[selected_column] < lower_bound) |
+                                           (df_diabet[selected_column] > upper_bound))]
+                st.write(f"Setul de date ar conține {len(cleaned_data)} înregistrări după eliminarea outlierilor.")
+
+            elif treatment_options == 'Winsorizing':
+                winsorized_data = df_diabet.copy()
+                winsorized_data.loc[winsorized_data[selected_column] < lower_bound, selected_column] = lower_bound
+                winsorized_data.loc[winsorized_data[selected_column] > upper_bound, selected_column] = upper_bound
+
+                fig, ax = plt.subplots(figsize=(12, 6))
+                ax.hist(df_diabet[selected_column], bins=30, alpha=0.7, label='Original', color='blue')
+                ax.hist(winsorized_data[selected_column], bins=30, alpha=0.7, label='Winsorized', color='green')
+                ax.set_title(f'Distribuția originală vs. Winsorized pentru {selected_column}')
+                ax.legend()
+                st.pyplot(fig)
+
+            elif treatment_options == 'Înlocuire cu medie/mediană':
+                method = st.radio("Alegeți metoda de înlocuire:", ['Medie', 'Mediană'])
+                replaced_data = df_diabet.copy()
+
+                mask_outliers = ((replaced_data[selected_column] < lower_bound) |
+                                 (replaced_data[selected_column] > upper_bound))
+
+                if method == 'Medie':
+                    replacement_value = df_diabet[~mask_outliers][selected_column].mean()
+                    replaced_data.loc[mask_outliers, selected_column] = replacement_value
+                    st.write(f"Valoarea de înlocuire (media): {replacement_value:.2f}")
+                else:
+                    replacement_value = df_diabet[~mask_outliers][selected_column].median()
+                    replaced_data.loc[mask_outliers, selected_column] = replacement_value
+                    st.write(f"Valoarea de înlocuire (mediana): {replacement_value:.2f}")
+
+                # Compararea distribuțiilor
+                fig, ax = plt.subplots(figsize=(12, 6))
+                ax.hist(df_diabet[selected_column], bins=30, alpha=0.7, label='Original', color='blue')
+                ax.hist(replaced_data[selected_column], bins=30, alpha=0.7, label=f'Înlocuit cu {method.lower()}',
+                        color='orange')
+                ax.set_title(f'Distribuția originală vs. Înlocuită pentru {selected_column}')
+                ax.legend()
+                st.pyplot(fig)
+        else:

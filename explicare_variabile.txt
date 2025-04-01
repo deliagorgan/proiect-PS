@@ -1,0 +1,97 @@
+
+- **Patient ID:** Identificator unic pentru fiecare pacient (de la 6000 la 7878).
+- **Age:** Vârsta pacientului, cuprinsă între 20 și 90 de ani.
+- **Gender:** Genul pacientului.
+    - 0 Masculin
+    - 1 Feminin
+- **Ethnicity:** Etnicitatea pacientului.
+    - 0 Caucazian
+    - 1 Afro-American
+    - 2 Asiatic
+    - 3 Altceva
+- **SocioeconomicStatus:** Statutul socio-economic al pacientului.
+    - 0 Scăzut
+    - 1 Mediu
+    - 2 Ridicat
+- **EducationLevel:** Nivelul de educație al pacientului.
+    - 0 Fără studii
+    - 1 Liceu
+    - 2 Facultate
+    - 3 Studii superioare
+- **BMI:** Indicele de masă corporală al pacientului (între 15 și 40).
+- **Smoking:** Indică dacă pacientul este fumător.
+    - 0 Nu
+    - 1 Da
+- **AlcoholConsumption:** Consumul săptămânal de alcool în unități (între 0 și 20).
+- **PhysicalActivity:** Activitatea fizică săptămânală în ore (între 0 și 10).
+- **DietQuality:** Scorul calității dietei (între 0 și 10).
+- **SleepQuality:** Scorul calității somnului (între 4 și 10).
+- **FamilyHistoryDiabetes:** Istoric familial de diabet.
+    - 0 Nu
+    - 1 Da
+- **GestationalDiabetes:** Istoric de diabet gestațional.
+    - 0 Nu
+    - 1 Da
+- **PolycysticOvarySyndrome:** Sindromul ovarelor polichistice.
+    - 0 Nu
+    - 1 Da
+- **PreviousPreDiabetes:** Istoric de prediabet.
+    - 0 Nu
+    - 1 Da
+- **Hypertension:** Prezența hipertensiunii arteriale.
+    - 0 Nu
+    - 1 Da
+- **SystolicBP:** Tensiunea arterială sistolică (între 90 și 180 mmHg).
+- **DiastolicBP:** Tensiunea arterială diastolică (între 60 și 120 mmHg).
+- **FastingBloodSugar:** Nivelul glicemiei a jeun (între 70 și 200 mg/dL).
+- **HbA1c:** Nivelul hemoglobinei glicozilate (între 4.0% și 10.0%).
+- **SerumCreatinine:** Nivelul creatininei serice (între 0.5 și 5.0 mg/dL).
+- **BUNLevels:** Nivelul de uree în sânge (între 5 și 50 mg/dL).
+- **CholesterolTotal:** Colesterol total (între 150 și 300 mg/dL).
+- **CholesterolLDL:** Colesterol LDL (între 50 și 200 mg/dL).
+- **CholesterolHDL:** Colesterol HDL (între 20 și 100 mg/dL).
+- **CholesterolTriglycerides:** Trigliceride (între 50 și 400 mg/dL).
+- **AntihypertensiveMedications:** Utilizarea medicamentelor antihipertensive.
+    - 0 Nu
+    - 1 Da
+- **Statins:** Utilizarea statinelor.
+    - 0 Nu
+    - 1 Da
+- **AntidiabeticMedications:** Utilizarea medicamentelor antidiabetice.
+    - 0 Nu
+    - 1 Da
+- **FrequentUrination:** Prezența urinării frecvente.
+    - 0 Nu
+    - 1 Da
+- **ExcessiveThirst:** Prezența setei excesive.
+    - 0 Nu
+    - 1 Da
+- **UnexplainedWeightLoss:** Pierdere inexplicabilă în greutate.
+    - 0 Nu
+    - 1 Da
+- **FatigueLevels:** Nivelul oboselii (între 0 și 10).
+- **BlurredVision:** Prezența vederii încețoșate.
+    - 0 Nu
+    - 1 Da
+- **SlowHealingSores:** Prezența rănilor care se vindecă lent.
+    - 0 Nu
+    - 1 Da
+- **TinglingHandsFeet:** Prezența furnicăturilor la nivelul mâinilor sau picioarelor.
+    - 0 Nu
+    - 1 Da
+- **QualityOfLifeScore:** Scorul calității vieții (între 0 și 100).
+- **HeavyMetalsExposure:** Expunerea la metale grele.
+    - 0 Nu
+    - 1 Da
+- **OccupationalExposureChemicals:** Expunerea profesională la substanțe chimice nocive.
+    - 0 Nu
+    - 1 Da
+- **WaterQuality:** Calitatea apei consumate.
+    - 0 Bună
+    - 1 Slabă
+- **MedicalCheckupsFrequency:** Frecvența controalelor medicale pe an (între 0 și 4).
+- **MedicationAdherence:** Scorul de aderență la tratament (între 0 și 10).
+- **HealthLiteracy:** Scorul de cunoștințe medicale (între 0 și 10).
+- **Diagnosis:** Diagnosticul diabetului.
+    - 0 Nu
+    - 1 Da

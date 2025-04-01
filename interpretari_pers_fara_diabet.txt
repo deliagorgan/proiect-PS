@@ -1,0 +1,101 @@
+##### **1. Vârsta (Age)**
+Vârsta medie a pacienților este de **55.33 ani**, ceea ce sugerează un
+grup preponderent de adulți de vârstă mijlocie și seniori. **25% dintre
+pacienți au sub 38 de ani**, iar **75% sunt sub 73 de ani**, indicând o
+concentrație mai mare în intervalul **40-70 de ani**. Deși riscul pentru
+diabet crește odată cu înaintarea în vârstă, există și pacienți tineri
+afectați de această boală.
+
+##### **2. Indicele de masă corporală (BMI)**
+Media BMI este **27.60**, ceea ce indică o tendință spre supraponderalitate.
+Valorile variază între **15.06 (subponderal)** și **39.99 (obezitate severă)**.
+**25% dintre pacienți au un BMI sub 21.34**, ceea ce îi plasează în categoria
+de greutate normală sau subponderală, în timp ce **25% au un BMI peste 33.78**,
+ceea ce îi încadrează în obezitate. Excesul de greutate este un factor de
+risc major pentru diabet.
+
+##### **3. Consumul de alcool (Alcohol Consumption)**
+Consumul mediu de alcool este **10.14 unități**, dar variază între **0 și
+19.99 unități**. Există pacienți care nu consumă deloc alcool, dar și un
+grup cu un consum ridicat. Un sfert dintre pacienți consumă mai puțin de
+**4.99 unități**, iar un alt sfert consumă mai mult de **15.17 unități**,
+ceea ce poate indica un risc mai mare de afecțiuni hepatice și cardiovasculare.
+
+##### **4. Activitatea fizică (Physical Activity)**
+Pacienții au în medie **5.22 ore** de activitate fizică pe săptămână, însă
+există o variabilitate mare, de la persoane care fac aproape zero mișcare
+(**0.004 ore**) până la indivizi foarte activi (**9.99 ore**). **25% dintre
+pacienți fac sub 2.80 ore**, ceea ce este destul de redus. Lipsa activității
+fizice poate contribui la creșterea greutății corporale, probleme cardiovasculare
+și scăderea sensibilității la insulină, chiar dacă pacienții nu au diabet în
+prezent.
+
+##### **5. Calitatea dietei (Diet Quality)**
+Scorul mediu al calității dietei este **4.99** (din 10), ceea ce indică o
+dietă moderat sănătoasă. **25% dintre pacienți au o dietă foarte slabă
+(sub 2.57)**, iar alții au o alimentație foarte bună (**peste 7.43**).
+Diferențele mari sugerează că unii pacienți au un stil de viață mai sănătos,
+în timp ce alții ar putea fi expuși riscurilor de sănătate din cauza alimentației
+nesănătoase.
+
+##### **6. Calitatea somnului (Sleep Quality)**
+Media calității somnului este **7.03** pe o scară de 10, ceea ce indică un
+somn relativ bun pentru majoritatea pacienților. Totuși, există persoane care
+dorm foarte prost (**4.01**) și altele care au un somn excelent (**9.98**).
+Somnul inadecvat poate afecta metabolismul glucozei și nivelul de energie,
+influențând riscul de diabet și alte afecțiuni metabolice.
+
+##### **7. Tensiunea arterială**
+- **Sistolică**: Media este **135.13 mmHg**, iar valorile variază între **90**
+  și **179 mmHg**.
+- **Diastolică**: Media este **89.08 mmHg**, cu valori între **60** și **119 mmHg**.
+
+Aceste valori sugerează că unii pacienți ar putea avea hipertensiune arterială,
+un factor de risc major pentru boli cardiovasculare. **25% dintre pacienți**
+au o tensiune sistolică sub **114 mmHg**, ceea ce este optim, dar **25%**
+depășesc **157 mmHg**, ceea ce indică hipertensiune severă.
+
+##### **8. Glicemia a jeun și HbA1c**
+- **Glicemia medie**: **121.36 mg/dL**, cu valori între **70.07** și **199.53 mg/dL**.
+- **Hemoglobina glicozilată (HbA1c)**: Media este **6.36%**, iar valorile
+  variază între **4.01%** și **9.99%**.
+
+Deși pacienții sunt etichetați ca "non-diabetici", unii dintre ei au glicemii
+mari, aproape de pragul diabetului. Valorile ridicate ale HbA1c la unii
+pacienți indică un risc crescut de prediabet.
+
+##### **9. Colesterol și trigliceride**
+- **Colesterol total**: **225.38 mg/dL**, valori între **150.06** și **299.99 mg/dL**.
+- **Colesterol LDL**: **124.68 mg/dL**, ceea ce este moderat.
+- **Colesterol HDL**: **59.73 mg/dL**, ceea ce este bun pentru sănătatea cardiovasculară.
+- **Trigliceride**: **225.89 mg/dL**, cu un minim de **50.58 mg/dL** și un maxim
+  de **399.65 mg/dL**.
+
+Colesterolul total și LDL sunt ușor ridicate, ceea ce poate indica un risc
+cardiovascular. Trigliceridele sunt foarte variabile, iar **25% dintre pacienți**
+au peste **311.95 mg/dL**, ceea ce indică un risc ridicat de boli de inimă.
+
+##### **10. Nivelul de oboseală**
+Nivelul mediu de oboseală raportat este **4.99** (din 10). Există pacienți
+care nu resimt deloc oboseală (**0.004**) și alții care au un nivel maxim de
+epuizare (**9.99**). Cei mai obosiți pacienți pot avea probleme de somn, stres
+sau alte afecțiuni.
+
+##### **11. Frecvența controalelor medicale și aderența la tratament**
+- **Controale medicale**: Media este **2.01** (pe o scară de la **0** la **10**),
+  indicând vizite medicale destul de rare.
+- **Aderența la tratament**: **4.92**, ceea ce sugerează o respectare moderată
+  a indicațiilor medicale.
+
+Pacienții nu merg foarte des la medic, ceea ce poate duce la întârzierea
+depistării problemelor de sănătate.
+
+##### **12. Nivelul de educație în sănătate**
+Media este **5.06**, cu valori între **0.017** și **9.99**. Diferențele mari
+indică faptul că unii pacienți au cunoștințe bune despre sănătate, iar alții
+foarte puține, ceea ce poate afecta alegerile de stil de viață.
+
+### **Concluzii**
+Deși acești pacienți au diabet, unii prezintă riscuri suplimentare, precum
+hipertensiune, obezitate și trigliceride mari. Intervențiile preventive
+(dietă, mișcare, controale regulate) ar putea reduce riscul complicațiilor.
