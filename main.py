@@ -6,7 +6,8 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder, StandardScaler, MinMaxScaler, RobustScaler, MaxAbsScaler
 from scipy import stats as scipy_stats
 from scipy.stats import chi2_contingency
-
+from cluster import  page_analiza_clustering_diabet
+from regresie import page_model_regresie_diabet
 st.set_page_config(page_title="Analiza datelor despre diabet", page_icon="📊", layout="wide")
 
 
@@ -22,7 +23,7 @@ st.markdown('<h1 style="color: inherit; font-size: 40px; text-align: center;">An
             unsafe_allow_html=True)
 
 section = st.sidebar.radio("Navigați la:",
-                           ["Detalii despre setul de date", "Analiza Exploratorie"])
+                           ["Detalii despre setul de date", "Analiza Exploratorie", "Analiza Clustering K-means", "Model de Regresie Liniară"])
 
 # ---------------------------
 # Secțiunea: Detalii despre setul de date
@@ -88,10 +89,17 @@ if section == "Detalii despre setul de date":
     else:
         st.success("Setul de date nu conține valori lipsă!")
 
+elif section == "Analiza Clustering K-means":
+    page_analiza_clustering_diabet(df_diabet)
 # ---------------------------
 # Secțiunea: Analiza Exploratorie
 # ---------------------------
-if section == "Analiza Exploratorie":
+# ---------------------------
+# Secțiunea: Model de Regresie Liniară
+# ---------------------------
+elif section == "Model de Regresie Liniară":
+    page_model_regresie_diabet(df_diabet)
+elif section == "Analiza Exploratorie":
     st.markdown("### Curățarea datelor inițiale")
     st.markdown(
         "Am eliminat coloanele care nu influențează analiza, adică PatientID și DoctorInCharge, deoarece acestea sunt identificatori și nu conțin informații relevante pentru analiza noastră.")
@@ -350,7 +358,6 @@ if section == "Analiza Exploratorie":
 
             fig, ax = plt.subplots(figsize=(12, 6))
 
-
             ax.hist(df_neg_diabet[selected_var], bins=30, alpha=0.7,
                     label='Fără diabet', color='green')
             ax.hist(df_poz_diabet[selected_var], bins=30, alpha=0.7,
@@ -362,7 +369,6 @@ if section == "Analiza Exploratorie":
             ax.legend()
 
             st.pyplot(fig)
-
 
             fig2, ax2 = plt.subplots(figsize=(12, 6))
             sns.kdeplot(data=df_neg_diabet, x=selected_var, label='Fără diabet', color='green', ax=ax2)
@@ -487,7 +493,6 @@ if section == "Analiza Exploratorie":
                     Vă recomandăm să selectați un subset de variabile de interes.
                     """)
 
-
             selected_vars = st.multiselect(
                 'Selectați variabilele pentru pairplot (maximum 6 recomandat):',
                 coloane_numerice,
@@ -500,10 +505,8 @@ if section == "Analiza Exploratorie":
                 if len(selected_vars) > 6:
                     st.warning("Ați selectat multe variabile, generarea pairplot-ului poate dura mai mult.")
 
-
                 plot_data = df_diabet[selected_vars + ['Diagnosis']].copy()
                 plot_data['Diagnostic'] = plot_data['Diagnosis'].map({0: 'Fără diabet', 1: 'Cu diabet'})
-
 
                 fig = plt.figure(figsize=(12, 10))
                 g = sns.pairplot(plot_data, hue='Diagnostic',
@@ -597,14 +600,14 @@ if section == "Analiza Exploratorie":
                 - Între FastingBloodSugar și HbA1c: Acest lucru este de așteptat din punct de vedere medical, deoarece HbA1c reprezintă nivelul mediu al glicemiei pe o perioadă de 2-3 luni.
                 - Între SystolicBP și DiastolicBP: Aceste două măsurători ale tensiunii arteriale tind să varieze împreună.
                 - Între CholesterolTotal și CholesterolLDL: Colesterolul total include LDL, deci această corelație este logică.
-                
+
                 - Între BMI și factori de risc metabolic: Un BMI ridicat tinde să fie asociat cu niveluri mai ridicate de colesterol și glicemie.
                 - Între SleepQuality și PhysicalActivity: Persoanele care sunt mai active fizic tind să aibă un somn de calitate mai bună.
                 - Între DietQuality și HealthLiteracy: Persoanele cu o educație medicală mai bună tind să aibă o dietă mai sănătoasă.
 
                 - Între PhysicalActivity și FatigueLevels: Mai multă activitate fizică tinde să fie asociată cu niveluri mai scăzute de oboseală.
                 - Între DietQuality și FastingBloodSugar: O dietă mai bună este asociată cu niveluri mai scăzute ale glicemiei.
-                
+
                 - FastingBloodSugar și HbA1c: Corelații foarte puternice, fiind criterii diagnostice pentru diabet.
                 - BMI, Age și SystolicBP: Corelații moderate, reflectând factorii de risc cunoscuți pentru diabet.
                 - PhysicalActivity și DietQuality: Corelații negative, indicând rolul protector al unui stil de viață sănătos.
@@ -653,7 +656,7 @@ if section == "Analiza Exploratorie":
                     **Dezavantajele Label Encoding:**
                     - Poate introduce ordine artificială între categorii
                     - Poate fi problematic pentru algoritmi care presupun relații ordinale între valori
-                    
+
                     #### Setul nostru de date nu are variabile care au valori literale, deci nu este nevoie de lable encoding.""")
 
             st.markdown("### One-Hot Encoding pentru variabile nominale")
@@ -683,7 +686,6 @@ if section == "Analiza Exploratorie":
                     """)
 
             st.markdown("### Aplicarea encodării pe întregul set de date")
-
 
             if st.button("Aplică encodarea pe întregul set de date"):
                 df_encoded = df_diabet.copy()
@@ -733,7 +735,6 @@ if section == "Analiza Exploratorie":
                 3. **Reducerea influenței valorilor extreme**: Valorile extreme sunt aduse mai aproape de medie, deși standardizarea nu le elimină complet.
                 """
             )
-
 
             selected_vars_std = st.multiselect(
                 'Selectați variabilele pentru standardizare:',
@@ -964,8 +965,6 @@ if section == "Analiza Exploratorie":
 
             O alternativă utilă atât la standardizare cât și la normalizare este **scalarea robustă**, care utilizează statistici robuste (mediană și IQR) în loc de medie și deviație standard. Aceasta este mai puțin sensibilă la prezența outlierilor și poate fi o alegere mai bună pentru seturi de date cu valori extreme.
             """)
-
-
 
 st.markdown(
     """
