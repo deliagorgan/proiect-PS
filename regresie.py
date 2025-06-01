@@ -17,6 +17,8 @@ def page_model_regresie_diabet(df_diabet):
     Înțelegerea factorilor care influențează nivelul HbA1c poate oferi informații valoroase pentru
     prevenția și managementul diabetului.
     """)
+    print(df_diabet)
+
 
     if not isinstance(df_diabet, pd.DataFrame):
         st.error("Nu există date disponibile pentru analiză.")
@@ -115,6 +117,8 @@ def page_model_regresie_diabet(df_diabet):
             lr = linear_model.LinearRegression()
             model = lr.fit(X_train, y_train)
 
+
+
             st.session_state.lr_model_diabet = model
             st.session_state.X_train_diabet = X_train
             st.session_state.X_test_diabet = X_test
@@ -124,6 +128,23 @@ def page_model_regresie_diabet(df_diabet):
             st.session_state.apply_log_diabet = apply_log
 
             y_train_pred = model.predict(X_train)
+
+
+
+            st.write("X_train shape:", X_train.shape)
+            st.write("X_test  shape:", X_test.shape)
+
+            st.write("Coeficienți regresie liniară:")
+            st.write(pd.DataFrame({
+                'Caracteristică': X_train.columns,
+                'Coeficient': model.coef_
+            }).sort_values('Coeficient', ascending=False))
+
+            st.write("Statistici HbA1c (train):", pd.Series(y_train).describe())
+            st.write("Statistici HbA1c (test):", pd.Series(y_test).describe())
+
+            st.write("Statistici HbA1c (train):", pd.Series(y_train).describe())
+            st.write("Statistici HbA1c (test):", pd.Series(y_test).describe())
 
             st.subheader("4. Evaluarea modelului pe setul de antrenare")
 
@@ -536,3 +557,155 @@ def page_model_regresie_diabet(df_diabet):
             """)
 
     return df_diabet
+
+
+def page_model_regresie_statsmodels(df_diabet):
+    st.title("Model de regresie multiplă (OLS) cu statsmodels pentru HbA1c")
+
+    st.markdown("""
+    Vom folosi pachetul **statsmodels** pentru a construi un model de regresie liniară multiplă (Ordinary Least Squares) 
+    care să explice variabila țintă **HbA1c** pe baza altor variabile din setul nostru de date despre diabet.
+    """)
+
+    if not isinstance(df_diabet, pd.DataFrame):
+        st.error("Nu există date disponibile pentru analiză.")
+        return
+
+    # 1. Curățare inițială și definirea țintei
+    cols_to_drop = ['PatientID', 'DoctorInCharge'] if 'PatientID' in df_diabet.columns else []
+    df_clean = df_diabet.drop(cols_to_drop, axis=1) if cols_to_drop else df_diabet.copy()
+
+    target_variable = "HbA1c"
+    if target_variable not in df_clean.columns:
+        st.error(f"Variabila țintă '{target_variable}' nu există în setul de date.")
+        return
+
+    if df_clean.shape[0] < 10:
+        st.error("Nu există suficiente date pentru a construi modelul de regresie.")
+        return
+
+    st.subheader("1. Definirea setului X (predictori) și y (țintă)")
+
+    y = df_clean[target_variable]
+    numerical_cols = df_clean.select_dtypes(include=['float64', 'int64']).columns.tolist()
+    # Eliminăm din coloanele numerice pe cele care nu vrem să le folosim ca predictori:
+    for col in ['Diagnosis', target_variable, 'AntidiabeticMedications']:
+        if col in numerical_cols:
+            numerical_cols.remove(col)
+
+    if not numerical_cols:
+        st.error("Nu există coloane numerice disponibile pentru a fi folosite ca predictori.")
+        return
+
+    # 2. Selectarea predictorilor de către utilizator
+    X_columns = st.multiselect(
+        "Selectați variabile numerice pentru regresie multiplă:",
+        numerical_cols,
+        default=numerical_cols[:5]  # primele 5 ca sugestie
+    )
+
+    if not X_columns:
+        st.error("Trebuie să selectați cel puțin o variabilă predictor.")
+        return
+
+    X = df_clean[X_columns]
+
+    # 3. Dacă există categorice în X_columns (nu ar trebui, pentru că am filtrat numeric), le putem codifica:
+    cat_cols = X.select_dtypes(include=['object', 'category']).columns.tolist()
+    if cat_cols:
+        st.subheader("Codificarea variabilelor categorice")
+        st.markdown("Vom aplica one-hot encoding pentru coloanele categorice selectate:")
+        st.write(cat_cols)
+        X = pd.get_dummies(X, columns=cat_cols, drop_first=True)
+        st.success(f"Au fost create {X.shape[1]} caracteristici în urma one-hot encoding.")
+
+    # 4. Împărțirea în seturi de antrenare și testare
+    st.subheader("2. Împărțirea datelor în antrenare și testare")
+    test_size = st.slider("Procent test (% din total)", min_value=10, max_value=50, value=20, step=5)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=test_size / 100, random_state=42
+    )
+    st.markdown(f"- {X_train.shape[0]} rânduri pentru antrenare")
+    st.markdown(f"- {X_test.shape[0]} rânduri pentru testare")
+
+    # 5. Construirea modelului OLS cu statsmodels
+    st.subheader("3. Antrenarea modelului OLS (statsmodels)")
+    if st.button("Antrenează modelul OLS"):
+        # Adăugăm constanta (intercept) manual
+        X_train_const = sm.add_constant(X_train)
+        X_test_const = sm.add_constant(X_test)
+
+        model_ols = sm.OLS(y_train, X_train_const).fit()
+        st.session_state.model_ols = model_ols
+        st.session_state.X_test_const = X_test_const
+        st.session_state.y_test = y_test
+
+        # 5.1. Afișăm sumarul complet
+        st.text(model_ols.summary())
+
+        # 5.2. Extragem și afișăm coeficienții într-un DataFrame
+        coef_df = pd.DataFrame({
+            'Coeficient': model_ols.params,
+            'StdErr': model_ols.bse,
+            't-val': model_ols.tvalues,
+            'P>|t|': model_ols.pvalues,
+            'IC 2.5%': model_ols.conf_int().iloc[:, 0],
+            'IC 97.5%': model_ols.conf_int().iloc[:, 1]
+        })
+        coef_df.index.name = 'Caracteristică'
+        st.subheader("Coeficienți și statistici inferențiale")
+        st.dataframe(coef_df)
+
+        # 5.3. Predicții și metrici pe setul de test
+        y_pred_test = model_ols.predict(X_test_const)
+        mse_test = mean_squared_error(y_test, y_pred_test)
+        r2_test = r2_score(y_test, y_pred_test)
+
+        st.subheader("4. Performanța modelului pe setul de testare")
+        st.write(f"- **MSE (test):** {mse_test:.4f}")
+        st.write(f"- **R² (test):** {r2_test:.4f}")
+
+        # 5.4. Grafic real vs prezis (test)
+        fig, ax = plt.subplots(figsize=(8, 6))
+        ax.scatter(y_pred_test, y_test, alpha=0.5, color='orange')
+        ax.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--')
+        ax.set_xlabel("Valori prezise")
+        ax.set_ylabel("Valori reale")
+        ax.set_title("Real vs. Prezis (set test)")
+        st.pyplot(fig)
+
+        st.success("Model OLS antrenat și evaluat cu succes!")
+
+    elif 'model_ols' in st.session_state:
+        # Dacă modelul a fost deja antrenat anterior, afișăm din nou rezultatele
+        model_ols = st.session_state.model_ols
+        X_test_const = st.session_state.X_test_const
+        y_test = st.session_state.y_test
+
+        st.text(model_ols.summary())
+
+        coef_df = pd.DataFrame({
+            'Coeficient': model_ols.params,
+            'StdErr': model_ols.bse,
+            't-val': model_ols.tvalues,
+            'P>|t|': model_ols.pvalues,
+            'IC 2.5%': model_ols.conf_int().iloc[:, 0],
+            'IC 97.5%': model_ols.conf_int().iloc[:, 1]
+        })
+        coef_df.index.name = 'Caracteristică'
+        st.dataframe(coef_df)
+
+        y_pred_test = model_ols.predict(X_test_const)
+        mse_test = mean_squared_error(y_test, y_pred_test)
+        r2_test = r2_score(y_test, y_pred_test)
+
+        st.write(f"- **MSE (test):** {mse_test:.4f}")
+        st.write(f"- **R² (test):** {r2_test:.4f}")
+
+        fig, ax = plt.subplots(figsize=(8, 6))
+        ax.scatter(y_pred_test, y_test, alpha=0.5, color='orange')
+        ax.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--')
+        ax.set_xlabel("Valori prezise")
+        ax.set_ylabel("Valori reale")
+        ax.set_title("Real vs. Prezis (set test)")
+        st.pyplot(fig)
